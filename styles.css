@@ -1,0 +1,746 @@
+:root {
+  color-scheme: light;
+  --font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont,
+    "Segoe UI", sans-serif;
+  --bg: #f7f7fb;
+  --card-bg: #ffffff;
+  --text: #1b1b1f;
+  --muted: #5b5b66;
+  --accent: #2652ff;
+  --accent-strong: #1c34c9;
+  --accent-soft: rgba(38, 82, 255, 0.12);
+  --accent-soft-strong: rgba(28, 52, 201, 0.18);
+  --border: #e0e0ee;
+  --shadow: 0 18px 36px rgba(26, 35, 126, 0.08);
+  --success: #4aa867;
+  --success-soft: rgba(74, 168, 103, 0.18);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-family);
+  box-sizing: border-box;
+  background:
+    radial-gradient(120% 80% at 10% 10%, rgba(148, 167, 255, 0.28), transparent 60%),
+    radial-gradient(100% 70% at 85% 0%, rgba(123, 233, 255, 0.2), transparent 65%),
+    radial-gradient(100% 75% at 50% 100%, rgba(255, 190, 120, 0.18), transparent 70%),
+    var(--bg);
+  color: var(--text);
+  line-height: 1.28;
+  letter-spacing: -0.01em;
+  font-size: 11px;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: clamp(6px, 3vw, 18px);
+}
+
+.page {
+  width: 210mm;
+  height: 297mm;
+  background: var(--card-bg);
+  padding: 9mm 8mm;
+  box-shadow: var(--shadow);
+  position: relative;
+  box-sizing: border-box;
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+.page::before {
+  content: none;
+}
+
+a {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+a:hover,
+a:focus {
+  text-decoration: underline;
+}
+
+.page > * {
+  position: relative;
+  z-index: 1;
+}
+
+.hero {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding-bottom: 1.8mm;
+  gap: 4mm;
+}
+
+.hero__content {
+  flex: 1 1 420px;
+  min-width: 0;
+  max-width: 720px;
+}
+
+.hero__tag {
+  display: inline-flex;
+  padding: 1mm 2mm;
+  border-radius: 999px;
+  background: var(--accent-soft);
+  color: var(--accent);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-size: 7.5px;
+  margin: 0 0 2mm;
+}
+
+.hero__name {
+  margin: 0 0 1.8mm;
+  font-size: clamp(17px, 1.9vw, 22px);
+  font-weight: 700;
+}
+
+.hero__title {
+  margin: 0 0 1.4mm;
+  font-size: 11.2px;
+  font-weight: 500;
+  color: var(--muted);
+}
+
+.hero__contacts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.8mm;
+  color: var(--muted);
+  font-size: 10.5px;
+  margin-bottom: 1.2mm;
+}
+
+.hero__contacts span {
+  opacity: 0.4;
+}
+
+.hero__contacts span:last-child {
+  color: #2c2c32;
+}
+
+.hero__photo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2.5mm;
+  background: var(--card-bg);
+  padding: 1.2mm;
+  border-radius: 18px;
+  box-shadow: var(--shadow);
+  border: 1px solid rgba(38, 82, 255, 0.12);
+  position: relative;
+  isolation: isolate;
+  margin-left: auto;
+  flex-shrink: 0;
+  width: clamp(32mm, 15vw, 46mm);
+}
+
+.hero__photo::after {
+  content: "";
+  position: absolute;
+  inset: 1.2mm;
+  border-radius: 14px;
+  background: radial-gradient(circle at top, rgba(38, 82, 255, 0.12), transparent);
+  z-index: -1;
+}
+
+.hero__photo img {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  height: auto;
+  border-radius: 24px;
+  object-fit: cover;
+  box-shadow: 0 14px 28px rgba(26, 35, 126, 0.16);
+  transition: transform 0.25s ease;
+}
+
+.hero__photo figcaption {
+  font-size: 9px;
+  color: var(--muted);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.hero__photo:hover img,
+.hero__photo:focus-visible img {
+  transform: translateY(-4px);
+}
+
+.layout {
+  padding: 0;
+  display: grid;
+  row-gap: 1.8mm;
+  column-gap: 4.2mm;
+}
+
+.layout__about,
+.layout__skills,
+.layout__experience,
+.layout__projects,
+.layout__education,
+.layout__certificates {
+  display: grid;
+  gap: 1.1mm;
+}
+
+.layout__projects-list,
+.layout__certificates {
+  display: grid;
+  gap: 1.8mm;
+}
+
+section > h2 {
+  margin-bottom: 0mm;
+  font-size: 12.6px;
+}
+
+.layout__about > h2,
+.layout__skills > h2 {
+  margin-top: 0mm;
+}
+
+p {
+  margin: 0 0 0.9mm;
+}
+
+.meta {
+  color: var(--muted);
+  font-size: 9.2px;
+  margin: 0.6mm 0 0;
+}
+
+.timeline-item {
+  padding: 2mm 3mm;
+  background: var(--card-bg);
+  border-radius: 18px;
+  box-shadow: var(--shadow);
+  margin-bottom: 0;
+}
+
+.timeline-item header {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 1.8mm;
+  align-items: baseline;
+  margin-bottom: 1.2mm;
+}
+
+.timeline-item h3 {
+  margin: 0;
+  font-size: 11.5px;
+  font-weight: 600;
+}
+
+.timeline-item ul {
+  margin: 0;
+  padding-left: 3.5mm;
+}
+
+.timeline-item li + li {
+  margin-top: 0.9mm;
+}
+
+.columns {
+  display: flex;
+  flex-direction: column;
+  gap: 3mm;
+}
+
+.card {
+  background: var(--card-bg);
+  border-radius: 18px;
+  padding: 1.9mm 3mm;
+  box-shadow: var(--shadow);
+  margin-bottom: 0;
+}
+
+.card h3 {
+  margin: 0 0 0.9mm;
+  font-size: 11px;
+}
+
+.layout__skills .skills {
+  display: grid;
+  gap: 0.8mm;
+}
+
+.skills {
+  list-style: disc;
+  padding-left: 4.2mm;
+  margin: 0;
+  display: block;
+}
+
+.skills li {
+  color: var(--text);
+  font-size: 9.3px;
+  line-height: 1.24;
+}
+
+.skills li + li {
+  margin-top: 0.8mm;
+}
+
+.skills--languages {
+  list-style: none;
+  padding: 0;
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: 2mm;
+  margin-left: 0;
+}
+
+.skills--languages li {
+  background: rgba(38, 82, 255, 0.08);
+  color: var(--accent);
+  border-radius: 12mm;
+  padding: 0.9mm 1.9mm;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 9.4px;
+  margin-top: 0;
+}
+
+.layout__skills > .meta {
+  margin-top: 0;
+  margin-bottom: 0.4mm;
+  font-size: 9px;
+}
+
+.certificates {
+  display: grid;
+  gap: 3mm;
+}
+
+.certificate-card {
+  display: flex;
+  align-items: stretch;
+  gap: 2mm;
+  background: var(--card-bg);
+  border-radius: 18px;
+  padding: 2mm;
+  color: inherit;
+  text-decoration: none;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.certificate-card:hover,
+.certificate-card:focus-visible {
+  transform: translateY(-2px);
+  box-shadow: 0 22px 44px rgba(26, 35, 126, 0.12);
+}
+
+.certificate-card__preview {
+  width: min(38vw, 48mm);
+  height: auto;
+  max-height: 40mm;
+  display: block;
+  border-radius: 12px;
+  object-fit: contain;
+  background: rgba(38, 82, 255, 0.08);
+  border: none;
+  pointer-events: none;
+}
+
+.certificate-card__info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1.6mm;
+}
+
+.certificate-card__title {
+  margin: 0;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.certificate-card__fallback {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  color: var(--accent);
+  font-weight: 600;
+  font-size: 10px;
+  text-align: center;
+  padding: 1.6mm;
+}
+
+.principles {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 2.4mm;
+}
+
+.principles li {
+  background: var(--card-bg);
+  border-radius: 18px;
+  padding: 2.2mm 3.4mm;
+  box-shadow: var(--shadow);
+}
+
+.principles strong {
+  display: block;
+  margin-bottom: 1.2mm;
+  font-size: 11px;
+}
+
+.footer {
+  position: absolute;
+  right: 8mm;
+  bottom: 6mm;
+  padding: 0;
+  text-align: right;
+  color: var(--muted);
+  font-size: 9.8px;
+}
+
+@page {
+  size: A4;
+  margin: 0;
+}
+
+@media (max-width: 640px) {
+  .hero {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 20px 18px 16px;
+    gap: 18px;
+  }
+
+  .hero__content {
+    display: grid;
+    justify-items: center;
+    gap: 12px;
+  }
+
+  .hero__contacts {
+    justify-content: center;
+  }
+
+  .layout {
+    padding: 0 18px 20px;
+  }
+
+  .layout__projects-list,
+  .layout__certificates {
+    gap: 12px;
+  }
+
+  .layout__skills .skills {
+    align-self: start;
+    justify-content: center;
+  }
+
+  .timeline-item,
+  .card,
+  .principles li {
+    padding: 18px;
+  }
+
+  .certificate-card {
+    flex-direction: column;
+  }
+
+  .certificate-card__preview {
+    width: 100%;
+    height: auto;
+    max-height: none;
+  }
+}
+
+@media (min-width: 880px) {
+  .layout {
+    grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+    grid-template-areas:
+      "about education"
+      "experience experience"
+      "skills projects"
+      "skills certificates";
+    align-items: start;
+    column-gap: 5mm;
+    row-gap: 1.8mm;
+  }
+
+  .layout__about {
+    grid-area: about;
+  }
+
+  .layout__skills {
+    grid-area: skills;
+  }
+
+  .layout__experience {
+    grid-area: experience;
+  }
+
+  .layout__projects {
+    grid-area: projects;
+  }
+
+  .layout__education {
+    grid-area: education;
+  }
+
+  .layout__certificates {
+    grid-area: certificates;
+  }
+
+  .layout__projects-list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: 2.4mm;
+  }
+}
+
+.layout__experience > h2 {
+  margin-bottom: 1.6mm;
+}
+
+.layout__experience .timeline-item {
+  padding: 1.8mm 3mm;
+  border-radius: 16px;
+  box-shadow: 0 12px 24px rgba(26, 35, 126, 0.08);
+}
+
+.layout__experience .timeline-item header {
+  gap: 1.4mm;
+  margin-bottom: 1.4mm;
+}
+
+.layout__experience .timeline-item h3 {
+  font-size: 11.5px;
+}
+
+.layout__experience .meta {
+  font-size: 9px;
+}
+
+.layout__experience .timeline-item ul {
+  padding-left: 2.6mm;
+}
+
+.layout__experience .timeline-item li + li {
+  margin-top: 1.2mm;
+}
+
+  .layout__projects > h2 {
+  margin-bottom: 1mm;
+}
+
+.layout__projects-list {
+  gap: 1mm;
+}
+
+.layout__projects-list .card {
+  padding: 1.6mm 2.5mm;
+  border-radius: 16px;
+  box-shadow: 0 10px 20px rgba(26, 35, 126, 0.07);
+}
+
+.layout__projects-list .card h3 {
+  font-size: 10.5px;
+  margin: 0 0 0.7mm;
+}
+
+.layout__projects-list .card p {
+  font-size: 9px;
+  margin: 0 0 0.7mm;
+}
+
+.layout__projects-list .meta {
+  font-size: 9px;
+}
+
+/* ========== МЕДИА-ЗАПРОС ДЛЯ ПЕЧАТИ (В САМОМ КОНЦЕ) ========== */
+@media print {
+  body {
+    padding: 0;
+    background: none;
+    font-size: 11px;
+  }
+
+  .page {
+    box-shadow: none;
+    border-radius: 0;
+    width: 210mm;
+    height: 297mm;
+    min-height: 297mm;
+    padding: 9mm 8mm;
+    max-width: none;
+    overflow: hidden; /* гарантированно обрезаем лишнее */
+  }
+
+  .layout {
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas:
+      "about education"
+      "experience experience"
+      "skills projects"
+      "skills certificates";
+    gap: 2mm; /* немного уменьшил вертикальные отступы между секциями */
+  }
+
+  .layout__about {
+    grid-area: about;
+  }
+
+  .layout__skills {
+    grid-area: skills;
+    align-content: start;
+  }
+
+  .layout__experience {
+    grid-area: experience;
+  }
+
+  .layout__projects {
+    grid-area: projects;
+  }
+
+  .layout__education {
+    grid-area: education;
+    align-content: start;
+  }
+
+  .layout__certificates {
+    grid-area: certificates;
+  }
+
+  .layout__projects-list {
+    grid-template-columns: 1fr;
+    gap: 1.6mm;
+  }
+
+  .layout__education .card {
+    padding: 1.8mm 2.5mm; /* чуть уменьшил */
+    border-radius: 14px;
+    align-self: start;
+  }
+
+  .layout__education .card h3 {
+    font-size: 11px;
+    margin-bottom: 1mm;
+  }
+
+  .layout__education .meta {
+    font-size: 9px;
+    margin-top: 0.5mm;
+  }
+
+  .layout__certificates {
+    gap: 1.6mm;
+  }
+
+  .certificate-card {
+    padding: 1.4mm;
+    border-radius: 14px;
+    gap: 1.5mm;
+  }
+
+  .certificate-card__preview {
+    max-height: 18mm; /* уменьшил для экономии места */
+    width: auto;
+    border-radius: 10px;
+  }
+
+  .certificate-card__info {
+    gap: 1mm;
+  }
+
+  .certificate-card__title {
+    font-size: 10.5px; /* чуть меньше */
+  }
+
+  .hero {
+    padding: 4mm 0 3.5mm;
+    gap: 4mm;
+  }
+
+  .hero__photo {
+    width: 40mm; /* немного уменьшил */
+    padding: 1mm;
+  }
+
+  .hero__photo img {
+    border-radius: 20px;
+  }
+
+  .hero__name {
+    font-size: 21px; /* чуть меньше */
+  }
+
+  .hero__title {
+    font-size: 12.5px;
+  }
+
+  .hero__contacts {
+    font-size: 10px;
+    gap: 1.5mm;
+  }
+
+  .skills--languages li {
+    font-size: 9px;
+    padding: 0.7mm 1.6mm;
+  }
+
+  .timeline-item {
+    padding: 1.8mm 2.8mm; /* уменьшил */
+    border-radius: 16px;
+  }
+
+  .timeline-item h3 {
+    font-size: 11.5px;
+  }
+
+  .timeline-item .meta {
+    font-size: 8.8px;
+  }
+
+  .timeline-item ul {
+    padding-left: 2.2mm;
+  }
+
+  .timeline-item li {
+    font-size: 10px;
+  }
+
+  .card {
+    padding: 1.8mm 2.8mm;
+    border-radius: 16px;
+  }
+
+  .card h3 {
+    font-size: 11px;
+    margin-bottom: 1mm;
+  }
+
+  .card p {
+    font-size: 9.5px;
+    margin-bottom: 0.8mm;
+  }
+
+  .footer {
+    padding: 1.5mm 0 0;
+    font-size: 9px;
+  }
+}
